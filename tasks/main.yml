@@ -1,0 +1,10 @@
+# (c) 2017 DataNexus Inc.  All Rights Reserved
+---
+- include: install-required-packages.yml static=no
+- include: add-jenkins-repo.yml static=no
+- include: install-jenkins.yml static=no
+- include_role:
+    name: configure-jenkins-nodes
+    tasks_from: configure-jenkins-server
+- include: enable-jenkins-service.yml static=no
+- include: start-jenkins-service.yml static=no

@@ -1,0 +1,23 @@
+# (c) 2017 DataNexus Inc.  All Rights Reserved
+---
+# add the respository and key needed to install jenkins
+- block:
+  # add the jenkins yum repository file to the system
+  - name: "Add jenkins yum repository file"
+    yum_repository:
+      baseurl: http://pkg.jenkins-ci.org/redhat-stable
+      name: jenkins
+      description: Jenkins stable repository
+    environment: "{{ environment_vars | default({}) }}"
+  # clean the yum metadata cache
+  - name: Clean yum metadata cache
+    command: yum clean metadata
+    args:
+      warn: no
+  # and add the jenkins RPM key to the system
+  - name: Add jenkins RPM key
+    rpm_key:
+      key: http://pkg.jenkins-ci.org/redhat-stable/jenkins-ci.org.key
+      state: present
+    environment: "{{ environment_vars | default({}) }}"
+  become: true

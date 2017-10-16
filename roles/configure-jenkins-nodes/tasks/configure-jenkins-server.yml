@@ -1,0 +1,9 @@
+# (c) 2017 DataNexus Inc.  All Rights Reserved
+---
+# setup the configuration using the template
+- name: Setup server configuration from template
+  template:
+    src: jenkins.j2
+    dest: /etc/sysconfig/jenkins
+    mode: 0644
+  become: true

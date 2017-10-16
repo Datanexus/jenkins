@@ -1,0 +1,8 @@
+# (c) 2017 DataNexus Inc.  All Rights Reserved
+---
+# start the jenkins service
+- name: Start jenkins service
+  service:
+    name: jenkins
+    state: restarted
+  become: true

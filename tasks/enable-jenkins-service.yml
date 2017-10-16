@@ -1,0 +1,8 @@
+# (c) 2017 DataNexus Inc.  All Rights Reserved
+---
+# enable the jenkins service
+- name: Enable jenkins service on boot
+  service:
+    name: jenkins
+    enabled: yes
+  become: true
